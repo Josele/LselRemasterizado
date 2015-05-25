@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
 	//rt_printf("sun \n");
 	model_init();
 	//rt_printf("model \n");
-	screen_setup();
+//	screen_setup();
 	anticollision_setup();
 	tracker_init();
 	ctrlilumination_init();
