@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
 	//rt_printf("CG \n");
 	railChange_setup();
 	//rt_printf("RC \n");
-	sun_setup();
+//	sun_setup();
 	//rt_printf("sun \n");
 	model_init();
 	//rt_printf("model \n");
