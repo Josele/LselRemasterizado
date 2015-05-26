@@ -135,7 +135,7 @@
 <hole x="19.5" y="17.5" drill="2"/>
 <text x="21" y="10" size="0.6096" layer="22" font="vector" ratio="15" rot="MR270" align="center">Enrique Casado</text>
 <text x="20" y="10" size="0.6096" layer="22" font="vector" ratio="15" rot="MR270" align="center">Samuel López</text>
-<text x="18.5" y="10" size="0.8128" layer="22" font="vector" ratio="10" rot="MR270" align="center">LSEL 2014</text>
+<text x="18.75" y="10" size="0.8128" layer="22" font="vector" ratio="10" rot="MR270" align="center">LSEL 2014</text>
 </plain>
 <libraries>
 <library name="SparkFun-DigitalIC">
