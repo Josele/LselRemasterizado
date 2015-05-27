@@ -135,7 +135,7 @@
 <hole x="18" y="49.5" drill="2"/>
 <text x="8.5" y="61" size="1.778" layer="1" font="vector" rot="R270" align="center">J. Gonzalez
 LSEL 2014</text>
-<text x="46.5" y="72.5" size="1.27" layer="1">Update 2015
+<text x="46.5" y="73" size="1.27" layer="21">Update 2015
 J.L. Moragas</text>
 </plain>
 <libraries>
