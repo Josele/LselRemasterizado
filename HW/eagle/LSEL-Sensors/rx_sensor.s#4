@@ -2344,7 +2344,7 @@ Source: Fairchild .. BAT54.pdf</description>
 <part name="SUPPLY2" library="supply2" deviceset="GND" device=""/>
 <part name="P+3" library="supply1" deviceset="VCC" device=""/>
 <part name="P+4" library="supply1" deviceset="VCC" device=""/>
-<part name="U$1" library="tsop-1" deviceset="TSOP4836" device=""/>
+<part name="TSOP4836" library="tsop-1" deviceset="TSOP4836" device=""/>
 <part name="P+5" library="supply1" deviceset="VCC" device=""/>
 <part name="R4" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="100"/>
 <part name="SUPPLY3" library="supply2" deviceset="GND" device=""/>
@@ -2373,7 +2373,7 @@ Source: Fairchild .. BAT54.pdf</description>
 <instance part="SUPPLY2" gate="GND" x="-93.98" y="30.48"/>
 <instance part="P+3" gate="VCC" x="-93.98" y="60.96"/>
 <instance part="P+4" gate="VCC" x="17.78" y="71.12"/>
-<instance part="U$1" gate="G$1" x="45.72" y="30.48" rot="R180"/>
+<instance part="TSOP4836" gate="G$1" x="45.72" y="30.48" rot="R180"/>
 <instance part="P+5" gate="VCC" x="-7.62" y="12.7" rot="R90"/>
 <instance part="R4" gate="G$1" x="5.08" y="12.7"/>
 <instance part="SUPPLY3" gate="GND" x="27.94" y="43.18"/>
@@ -2453,7 +2453,7 @@ Source: Fairchild .. BAT54.pdf</description>
 <wire x1="22.86" y1="35.56" x2="22.86" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="22.86" y1="48.26" x2="27.94" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="48.26" x2="27.94" y2="45.72" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="GND"/>
+<pinref part="TSOP4836" gate="G$1" pin="GND"/>
 <wire x1="38.1" y1="35.56" x2="22.86" y2="35.56" width="0.1524" layer="91"/>
 <junction x="22.86" y="35.56"/>
 </segment>
@@ -2510,7 +2510,7 @@ Source: Fairchild .. BAT54.pdf</description>
 <net name="N$2" class="0">
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
-<pinref part="U$1" gate="G$1" pin="V+"/>
+<pinref part="TSOP4836" gate="G$1" pin="V+"/>
 <wire x1="10.16" y1="12.7" x2="22.86" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="22.86" y1="12.7" x2="38.1" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="12.7" x2="38.1" y2="25.4" width="0.1524" layer="91"/>
@@ -2557,7 +2557,7 @@ Source: Fairchild .. BAT54.pdf</description>
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="17.78" y1="55.88" x2="17.78" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U$1" gate="G$1" pin="OUT"/>
+<pinref part="TSOP4836" gate="G$1" pin="OUT"/>
 <wire x1="17.78" y1="50.8" x2="17.78" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="30.48" x2="38.1" y2="30.48" width="0.1524" layer="91"/>
 <junction x="17.78" y="50.8"/>

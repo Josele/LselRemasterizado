@@ -1928,8 +1928,8 @@ Source: www.tycoelectronics.com .. ENG_DS_1654001_1099_RJ_L_0507.pdf</descriptio
 <instance part="R3" gate="G$1" x="17.78" y="60.96" rot="R90"/>
 <instance part="C1" gate="G$1" x="-76.2" y="48.26" rot="R180"/>
 <instance part="C2" gate="G$1" x="22.86" y="25.4" rot="R180"/>
-<instance part="JP1" gate="G$1" x="45.72" y="68.58" rot="MR0"/>
-<instance part="JP2" gate="G$1" x="76.2" y="68.58" rot="R180"/>
+<instance part="JP1" gate="G$1" x="83.82" y="68.58" rot="MR180"/>
+<instance part="JP2" gate="G$1" x="50.8" y="68.58" rot="R180"/>
 <instance part="JP3" gate="A" x="66.04" y="48.26"/>
 <instance part="LED1" gate="G$1" x="-93.98" y="53.34"/>
 <instance part="P+1" gate="VCC" x="-76.2" y="60.96"/>
@@ -1987,7 +1987,7 @@ Source: www.tycoelectronics.com .. ENG_DS_1654001_1099_RJ_L_0507.pdf</descriptio
 <segment>
 <pinref part="JP2" gate="G$1" pin="4"/>
 <pinref part="JP1" gate="G$1" pin="4"/>
-<wire x1="78.74" y1="71.12" x2="48.26" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="71.12" x2="81.28" y2="71.12" width="0.1524" layer="91"/>
 <label x="58.42" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
@@ -2025,7 +2025,7 @@ Source: www.tycoelectronics.com .. ENG_DS_1654001_1099_RJ_L_0507.pdf</descriptio
 <segment>
 <pinref part="JP1" gate="G$1" pin="3"/>
 <pinref part="JP2" gate="G$1" pin="3"/>
-<wire x1="48.26" y1="68.58" x2="78.74" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="68.58" x2="53.34" y2="68.58" width="0.1524" layer="91"/>
 <label x="58.42" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
@@ -2055,7 +2055,7 @@ Source: www.tycoelectronics.com .. ENG_DS_1654001_1099_RJ_L_0507.pdf</descriptio
 <segment>
 <pinref part="JP2" gate="G$1" pin="2"/>
 <pinref part="JP1" gate="G$1" pin="2"/>
-<wire x1="78.74" y1="66.04" x2="48.26" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="66.04" x2="81.28" y2="66.04" width="0.1524" layer="91"/>
 <label x="58.42" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
@@ -2114,7 +2114,7 @@ Source: www.tycoelectronics.com .. ENG_DS_1654001_1099_RJ_L_0507.pdf</descriptio
 <segment>
 <pinref part="JP1" gate="G$1" pin="5"/>
 <pinref part="JP2" gate="G$1" pin="5"/>
-<wire x1="48.26" y1="63.5" x2="78.74" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="73.66" x2="53.34" y2="73.66" width="0.1524" layer="91"/>
 <label x="58.42" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
