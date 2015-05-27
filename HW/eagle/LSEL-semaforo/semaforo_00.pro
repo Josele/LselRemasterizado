@@ -2,7 +2,7 @@ EAGLE AutoRouter Statistics:
 
 Job           : C:/Users/josele/GitHub/LselRemasterizado/HW/eagle/LSEL-semaforo/semaforo.brd
 
-Start at      : 14:58:30 (27/05/2015)
+Start at      : 20:22:21 (27/05/2015)
 End at        : 01:00:00 (01/01/1970)
 Elapsed time  : 00:00:00
 

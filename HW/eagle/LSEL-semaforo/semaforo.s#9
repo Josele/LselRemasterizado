@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -2283,7 +2283,7 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <instance part="LED3" gate="G$1" x="119.38" y="5.08"/>
 <instance part="LED4" gate="G$1" x="27.94" y="38.1"/>
 <instance part="R4" gate="G$1" x="38.1" y="40.64" rot="R90"/>
-<instance part="JP2" gate="G$1" x="-20.32" y="38.1"/>
+<instance part="JP2" gate="G$1" x="-22.86" y="40.64" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -2308,8 +2308,8 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <junction x="15.24" y="45.72"/>
 <pinref part="R4" gate="G$1" pin="2"/>
 <junction x="38.1" y="45.72"/>
-<pinref part="JP2" gate="G$1" pin="3"/>
-<wire x1="-15.24" y1="40.64" x2="-2.54" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="2"/>
+<wire x1="-2.54" y1="40.64" x2="-27.94" y2="40.64" width="0.1524" layer="91"/>
 <junction x="-2.54" y="40.64"/>
 </segment>
 </net>
@@ -2333,8 +2333,8 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <junction x="10.16" y="33.02"/>
 <pinref part="LED4" gate="G$1" pin="C"/>
 <junction x="27.94" y="33.02"/>
-<pinref part="JP2" gate="G$1" pin="2"/>
-<wire x1="-15.24" y1="38.1" x2="-2.54" y2="38.1" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="3"/>
+<wire x1="-2.54" y1="38.1" x2="-27.94" y2="38.1" width="0.1524" layer="91"/>
 <junction x="-2.54" y="38.1"/>
 </segment>
 </net>
@@ -2351,8 +2351,8 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <wire x1="142.24" y1="48.26" x2="142.24" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="53.34" x2="91.44" y2="53.34" width="0.1524" layer="91"/>
 <junction x="91.44" y="53.34"/>
-<pinref part="JP2" gate="G$1" pin="4"/>
-<wire x1="-15.24" y1="43.18" x2="-2.54" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="1"/>
+<wire x1="-2.54" y1="43.18" x2="-27.94" y2="43.18" width="0.1524" layer="91"/>
 <junction x="-2.54" y="43.18"/>
 </segment>
 </net>
@@ -2371,8 +2371,8 @@ Standard schematic elements and footprints for 5mm, 3mm, 1206, and 0603 sized LE
 <wire x1="129.54" y1="27.94" x2="129.54" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="40.64" x2="91.44" y2="40.64" width="0.1524" layer="91"/>
 <junction x="91.44" y="40.64"/>
-<pinref part="JP2" gate="G$1" pin="1"/>
-<wire x1="-15.24" y1="35.56" x2="-2.54" y2="35.56" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="4"/>
+<wire x1="-2.54" y1="35.56" x2="-27.94" y2="35.56" width="0.1524" layer="91"/>
 <junction x="-2.54" y="35.56"/>
 </segment>
 </net>
