@@ -52,7 +52,7 @@ Des_Ser_init();
 initialize_readline();
 	while (!done) {
 		char* s; 
-		char* line=(char *)malloc(100* sizeof(char));
+		char* line;
 		int done2=0;
 //		printf ("Ejecutamos : %s\n", line);
 		do{
@@ -60,7 +60,7 @@ initialize_readline();
 		}while(!done2);	
 //		line = readline(">>> ");	
 		line=get_buff();
-//		printf ("Ejecutamos : %s\n", line);
+//		printf ("Ejecutamos : %d\n",sizeof( line));
 		if (!line)
 			break;
 
@@ -70,7 +70,7 @@ initialize_readline();
 			execute_line(s);
 		}
 
-		//free(line);
+//		free(line);
 	}
 }
 
