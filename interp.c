@@ -49,15 +49,18 @@ void interp_run(void) {
 	
 fsm_t* serv_fsm = serv_init();
 Des_Ser_init();
+initialize_readline();
 	while (!done) {
-		char* s;
-		char* line;
-		int done2;
+		char* s; 
+		char* line=(char *)malloc(100* sizeof(char));
+		int done2=0;
+//		printf ("Ejecutamos : %s\n", line);
 		do{
 		done2=serv_state_trans (serv_fsm); 
 		}while(!done2);	
-	
-		line =get_buff();
+//		line = readline(">>> ");	
+		line=get_buff();
+//		printf ("Ejecutamos : %s\n", line);
 		if (!line)
 			break;
 
@@ -67,7 +70,7 @@ Des_Ser_init();
 			execute_line(s);
 		}
 
-		free(line);
+		//free(line);
 	}
 }
 

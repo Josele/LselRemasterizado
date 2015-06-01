@@ -35,7 +35,7 @@ static int sckt_weight (fsm_t* this)
 printf("error de lectura\n");
 return 0;}
 tam=(int)buff[0];
-printf ("Soy servidor, He recibido : %d\n", tam);
+//printf ("Soy servidor, He recibido : %d\n", tam);
 
 return 1;
 }
@@ -74,7 +74,7 @@ memset(buff,'\0',MAXDATASIZE);
 }
 static void  execute (fsm_t* this)
 {
-printf ("Soy servidor, He recibido : %s\n", buff);
+//printf ("Soy servidor, He recibido : %s\n", buff);
   
 	//ejecutamos y respondemos con el OK o error
 send(Des_Clit,"OK",2,0);
