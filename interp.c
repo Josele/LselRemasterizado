@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-
+#include "Server.h"
 #define MAXCMDS 100
 
 static int done = 0;
@@ -46,12 +46,18 @@ int interp_addcmd(char* cmd, int (*cmd_func)(char*), char* doc) {
 }
 
 void interp_run(void) {
-	initialize_readline();
+	
+fsm_t* serv_fsm = serv_init();
+Des_Ser_init();
 	while (!done) {
 		char* s;
 		char* line;
-
-		line = readline(">>> ");
+		int done2;
+		do{
+		done2=serv_state_trans (serv_fsm); 
+		}while(!done2);	
+	
+		line =get_buff();
 		if (!line)
 			break;
 

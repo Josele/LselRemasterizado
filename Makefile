@@ -1,11 +1,15 @@
 CC = gcc
-CFLAGS = -g -Wall $(shell xeno-config --skin native --cflags)
+CFLAGS = -g -o -Wall $(shell xeno-config --skin native --cflags)
 LDFLAGS = $(shell xeno-config --skin native --ldflags)
 LDLIBS = -lwiringPi -lreadline -lm -lbcm2835
 
 objs = \
 	daemon.o \
 	tasks.o \
+	LibSock/Socket_Servidor.o \
+	LibSock/Socket.o \
+	LibSock/fsm.o \
+	Server.o \
 	interp.o \
 	train.o \
 	observer.o \
