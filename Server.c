@@ -8,7 +8,7 @@
 #include "LibSock/Socket.h"
 #include "Server.h"
 #define MAXDATASIZE 100
-#define PORT 45000
+#define PORT 4500
 static char buff[MAXDATASIZE];  
 volatile int tam;
 volatile int flag_leer;
