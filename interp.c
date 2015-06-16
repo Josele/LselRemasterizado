@@ -49,7 +49,7 @@ void interp_run(void) {
 	
 fsm_t* serv_fsm = serv_init();
 Des_Ser_init();
-initialize_readline();
+//initialize_readline();
 	while (!done) {
 		char* s; 
 		char* line;
