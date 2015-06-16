@@ -1,6 +1,6 @@
 #!/bin/sh 
 echo start
-sudo fuser -k 45000/tcp
+sudo fuser -k 4500/tcp
 sudo ./daemon  
 
 gpio write 19 0
