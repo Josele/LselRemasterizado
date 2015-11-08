@@ -26,6 +26,8 @@ static int conexion_start (fsm_t* this)
  if(-1==(Des_Clit=Acepta_Conexion_Cliente (Des_Ser)))
  return 0;
 
+printf("conexion start\n");
+
 return 1;
 }
 
@@ -33,7 +35,8 @@ static int sckt_weight (fsm_t* this)
 {//int resultado=recvform(Des_Clit,buff,MAXDATASIZE,);
  if(-1==Lee_Socket(Des_Clit,buff,1)){
 printf("error de lectura\n");
-return 0;}
+this->tt->dest_state=SERV_CLOSE;//saltamos a cerrar el socket
+return 1;}
 tam=(int)buff[0];
 //printf ("Soy servidor, He recibido : %d\n", tam);
 
@@ -43,8 +46,8 @@ static int sckt_instruc (fsm_t* this)
 {
  if(-1==Lee_Socket(Des_Clit,buff,tam)){
 printf("error de lectura\n");
-
-return 0;
+this->tt->dest_state=SERV_CLOSE;
+return 1;
 }
 
 return 1;
@@ -77,14 +80,15 @@ static void  execute (fsm_t* this)
 //printf ("Soy servidor, He recibido : %s\n", buff);
   
 	//ejecutamos y respondemos con el OK o error
-send(Des_Clit,"OK",2,0);
+send(Des_Clit,"LO",2,0);
+printf("envio LO\n");
 flag_leer=1;
 
 }
 static void finish (fsm_t* this)
 {
 memset(buff,'\0',MAXDATASIZE);
-
+printf("finish\n");
 // podemos añadir un flag con un flag con un break etc
 flag_leer=0;
 }
