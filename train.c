@@ -16,7 +16,6 @@
 #include "train.h"
 #include "dcc.h"
 #include "utils.h"
-
 train_t* trains[MAXTRAINS];
 train_t* current_train;
 int ntrains = 0;
@@ -164,23 +163,38 @@ void train_destroy(train_t* this) {
  */
 int train_cmd(char* arg)
 {
+	char resp_msg[150];
+	char temp_msg[150];
 	/*
 	 * list
 	 *
 	 * Lists every train in the model
 	 */
+	 memset(resp_msg,'\0',maxdatasize);
 	if (0 == strcmp(arg, "list"))
 	{
 		printf(
 				"ID\tNAME\tPOWER\tTARGET\tDIRECTION\tSECTOR\tSECURITY\tACTIVE\n");
 		int i;
+		 snprintf(resp_msg,maxdatasize,"ID NAME POWER TARGET DIRECTION SECTOR SECURITY ACTIVE<br>");
 		for (i = 0; i < ntrains; ++i) {
 			printf("%d\t%s\t%d\t%d\t%s\t\t%d\t%d\t\t%s\r\n", trains[i]->ID,
 					trains[i]->name, trains[i]->power, trains[i]->target_power,
 					(trains[i]->direction) == FORWARD ? "FORWARD" : "REVERSE",
 					trains[i]->telemetry->sector, trains[i]->security_override,
 					(trains[i]->ID == current_train->ID) ? "<" : " ");
+		memset(temp_msg,'\0',maxdatasize);
+		snprintf(temp_msg,maxdatasize,"%d %s %d %d %s  %d %d %s <br>", trains[i]->ID,
+                                        trains[i]->name, trains[i]->power, trains[i]->target_power,
+                                        (trains[i]->direction) == FORWARD ? "FORWARD" : "REVERSE",
+                                        trains[i]->telemetry->sector, trains[i]->security_override,
+                                        (trains[i]->ID == current_train->ID) ? "<" : " ");
+		strncat(resp_msg,temp_msg,strlen(temp_msg));
+		
+		
 		}
+		
+                set_res(resp_msg,strlen(resp_msg));
 		return 0;
 	}
 
@@ -198,11 +212,16 @@ int train_cmd(char* arg)
 		for (i = 0; i < ntrains; i++) {
 			if (trains[i]->ID == train_id) {
 				current_train = trains[i];
+				snprintf(resp_msg,maxdatasize,"Selected train %d",train_id);
+		                set_res(resp_msg,strlen(resp_msg));
 				return 0;
 			}
 		}
 		printf(
 				"Train not found. Use train list to see a list of available trains\n");
+
+                snprintf(resp_msg,maxdatasize,"Train not found. Use train list to see a list of available trains");
+                set_res(resp_msg,strlen(resp_msg));
 		return 1;
 	}
 
@@ -218,11 +237,17 @@ int train_cmd(char* arg)
 		target_speed = atoi(arg + strlen("speed "));
 		if (abs(target_speed) > 28) {
 			printf("Speed must be between -28 and 28\n");
+		 	snprintf(resp_msg,maxdatasize,"Speed must be between -28 and 28");
+        		set_res(resp_msg,strlen(resp_msg));
 			return 1;
 		} else {
 			train_set_target_power(current_train, target_speed);
 			printf("Train %d %s speed set to %d\n", current_train->ID,
 					current_train->name, target_speed);
+			snprintf(resp_msg,maxdatasize,"Train %d %s speed set to %d\n", current_train->ID,
+                                        current_train->name, target_speed);
+                        set_res(resp_msg,strlen(resp_msg));
+		
 		}
 		return 0;
 	}
@@ -251,6 +276,9 @@ int train_cmd(char* arg)
 	{
 		train_emergency_stop(current_train);
 		printf("Train %d %s stopped\n", current_train->ID, current_train->name);
+		snprintf(resp_msg,maxdatasize,"Train %d %s stopped\n", current_train->ID, current_train->name);
+                set_res(resp_msg,strlen(resp_msg));
+
 		return 0;
 	}
 

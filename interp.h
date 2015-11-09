@@ -15,6 +15,7 @@
 
 #ifndef INTERP_H
 #define INTERP_H
+extern const int maxdatasize ;
 
 
 /**
@@ -23,6 +24,7 @@
  * @defgroup interpreter_actions intepreter actions
  * @{
  */
+
 void interp_run(void);
 int interp_addcmd(char* cmd, int (*cmd_func)(char*), char* doc);
 /***@}*/
