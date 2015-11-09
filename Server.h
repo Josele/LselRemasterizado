@@ -5,4 +5,5 @@ void Des_Ser_init();
 fsm_t* serv_init();
 int serv_state_trans(fsm_t* serv_fsm);
 char* get_buff();
+void set_res(char* resp,int length);
 #endif
