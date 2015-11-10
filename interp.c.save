@@ -75,8 +75,8 @@ void interp_run_auto(void) {
 	file = fopen("params.txt", "r");	
         while (!done) {
                 char* s;
-                char line[80];
-		line[0]='\0';
+                char line[];
+		line[0]='\080';
 		if(feof(file))
 			rewind(file);
                 //line = readline(">>> ");

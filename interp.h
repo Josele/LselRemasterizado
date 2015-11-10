@@ -23,9 +23,8 @@
  * @defgroup interpreter_actions intepreter actions
  * @{
  */
-void interp_run_ser(void);
 void interp_run(void);
-
+void interp_run_auto(void);
 int interp_addcmd(char* cmd, int (*cmd_func)(char*), char* doc);
 /***@}*/
 
