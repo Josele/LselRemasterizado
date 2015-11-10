@@ -1,0 +1,45 @@
+
+
+
+Sensor :21 
+
+ 
+ Tasa de error: 0.002000
+ errores: 1
+ Tasa de incorrectos del sensor 21 :  0.002000
+ Correctos 499
+ Incorrectos 1 
+ Diesel 0 Renfe 0 
+
+
+Sensor :22 
+
+ 
+ Tasa de error: 0.000000
+ errores: 0
+ Tasa de incorrectos del sensor 22 :  0.000000
+ Correctos 500
+ Incorrectos 0 
+ Diesel 0 Renfe 0 
+
+
+Sensor :23 
+
+ 
+ Tasa de error: 0.000000
+ errores: 0
+ Tasa de incorrectos del sensor 23 :  0.000000
+ Correctos 500
+ Incorrectos 0 
+ Diesel 0 Renfe 0 
+
+
+Sensor :24 
+
+ 
+ Tasa de error: 0.002000
+ errores: 1
+ Tasa de incorrectos del sensor 24 :  0.002000
+ Correctos 499
+ Incorrectos 1 
+ Diesel 0 Renfe 0 
