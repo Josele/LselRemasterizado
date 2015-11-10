@@ -61,6 +61,7 @@ typedef struct
 	struct timeval timestamp;
 	float time_est;
 	float current_time_est;
+	
 } telemetry_t;
 
 /**

@@ -847,6 +847,7 @@ void train_set_current_time_estimation(train_t* this, float estimation)
 void train_set_current_sector(train_t* this, char sector)
 {
 	rt_mutex_acquire(&this->mutex, TM_INFINITE);
+ 
 	this->telemetry->sector = sector;
 	//rt_printf ("Starting notify\n");
 	rt_mutex_release(&this->mutex);
