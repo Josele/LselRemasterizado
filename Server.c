@@ -38,8 +38,12 @@ static int sckt_instruc (fsm_t* this)
 memset(buff,'\0',MAXDATASIZE);
 if(-1==Lee_Socket(Des_Clit,buff,MAXDATASIZE)){
 printf("C: error de lectura\n");
-this->tt->dest_state=SERV_CLOSE;
-return 1;
+
+//this->tt->dest_state=SERV_CLOSE;
+close(Des_Clit); /* cierra fd2*/
+if(-1==(Des_Clit=Acepta_Conexion_Cliente (Des_Ser)))
+
+return 0;
 }
 
 return 1;
