@@ -31,7 +31,7 @@
 #include "model.h"
 #include "sensorIR.h"
 #include "railChange.h"
-//#include "trafficLight.h"
+#include "trafficLight.h"
 #include "crossingGate.h"
 #include "tracker.h"
 #include "railway.h"
@@ -107,13 +107,13 @@ int main(int argc, char* argv[]) {
 	//rt_printf("train \n");
 	railways_setup();
 	//rt_printf("rail\n");
-//	semaphore_setup();
+	semaphore_setup();
 	//rt_printf("sem \n");
-	//trafficLight_setup();
+	trafficLight_setup();
 	//rt_printf("TL\n");
-//	crossingGate_setup();
+	crossingGate_setup();
 	//rt_printf("CG \n");
-//	railChange_setup();
+	railChange_setup();
 	//rt_printf("RC \n");
 //	sun_setup();
 	//rt_printf("sun \n");
@@ -122,11 +122,11 @@ int main(int argc, char* argv[]) {
 //	screen_setup();
 	anticollision_setup();
 	tracker_init();
-//	ctrlilumination_init();
+	ctrlilumination_init();
 
 	task_start_all();
-//	sleep(1);
-	interp_run_auto();
+	sleep(1);
+	interp_run();
 
 	task_delete_all();
 	i2c_close(i2chandler[0]->i2chandler );
