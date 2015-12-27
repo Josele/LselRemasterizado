@@ -13,7 +13,8 @@ static char buff[MAXDATASIZE];
 static char respuesta[MAXDATASIZE];
 volatile int tam;
 volatile int flag_leer;
-volatile int flag_enviar;
+volatile int fenviar=0;
+ RT_MUTEX fe_mutex;
 volatile static int Des_Ser;
 volatile static int Des_Clit;
 enum serv_state {
@@ -51,11 +52,14 @@ return 1;
 
 static int answer_prepare (fsm_t* this)
 {
+rt_mutex_acquire(&fe_mutex,TM_INFINITE);
+if(fenviar=0){
+rt_mutex_release(&fe_mutex);
 
-if(flag_enviar=0)
 return 0;
-
-flag_enviar=0;
+}
+fenviar=0;
+rt_mutex_release(&fe_mutex);
 return 1;
 }
 
@@ -116,7 +120,9 @@ Des_Ser=Abre_Socket_Inet (PORT,1);
 
 
 fsm_t* serv_init(){
+rt_mutex_create(&fe_mutex, NULL);
 fsm_t* serv_fsm = fsm_new (serv);
+
 return serv_fsm;
 }
 int serv_state_trans(fsm_t* serv_fsm){
@@ -133,12 +139,15 @@ return buff;
 }
 
 void set_res(char *resp,int length){
+rt_mutex_acquire(&fe_mutex,TM_INFINITE);
 memset(respuesta,'\0',MAXDATASIZE);
 if(length>MAXDATASIZE){
 	strncpy(respuesta,"Respuesta muy larga", 19);
 	return;}
 strncpy(respuesta,resp,length );
-flag_enviar=1;
+
+fenviar=1;
+rt_mutex_release(&fe_mutex);
 }
 /*
 int main()

@@ -93,10 +93,10 @@ railChange_set_direction(railChange_t* this, direction_t direction)
         rt_mutex_acquire(&(this->mutex), TM_INFINITE);
 
 	
-	rt_mutex_acquire(&(i2chandler[0]->mutex), TM_INFINITE);
-	i2c_send_sequence(i2chandler[0]->i2chandler, railChange_comand, 2, 0);
-	i2c_send_sequence(i2chandler[0]->i2chandler, railChange_comand2, 2, 0);
-	i2c_send_sequence(i2chandler[0]->i2chandler, railChange_comand3, 2, 0);
-	i2c_send_sequence(i2chandler[0]->i2chandler, railChange_comand4, 2, 0);
-	rt_mutex_release(&i2chandler[0]->mutex);
+	rt_mutex_acquire(&(i2chandler[1]->mutex), TM_INFINITE);
+	i2c_send_sequence(i2chandler[1]->i2chandler, railChange_comand, 2, 0);
+	i2c_send_sequence(i2chandler[1]->i2chandler, railChange_comand2, 2, 0);
+	i2c_send_sequence(i2chandler[1]->i2chandler, railChange_comand3, 2, 0);
+	i2c_send_sequence(i2chandler[1]->i2chandler, railChange_comand4, 2, 0);
+	rt_mutex_release(&i2chandler[1]->mutex);
 }

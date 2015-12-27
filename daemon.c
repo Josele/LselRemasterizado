@@ -31,7 +31,7 @@
 #include "model.h"
 #include "sensorIR.h"
 #include "railChange.h"
-//#include "trafficLight.h"
+#include "trafficLight.h"
 #include "crossingGate.h"
 #include "tracker.h"
 #include "railway.h"
@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
 	//rt_printf("rail\n");
 	semaphore_setup();
 	//rt_printf("sem \n");
-	//trafficLight_setup();
+	trafficLight_setup();
 	//rt_printf("TL\n");
 	crossingGate_setup();
 	//rt_printf("CG \n");
