@@ -14,7 +14,7 @@
  * El Servicio debe estar dado de alta en /etc/services como tcp.
  * Devuelve el descriptor del socket que atiende a ese servicio o -1 si ha habido error.
  */
-int Abre_Socket_Inet (uint16_t port,int Backlog);
+int Abre_Socket_Inet (uint16_t Port,int Backlog);
 
 /**
  * Acepta un cliente para un socket INET.
