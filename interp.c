@@ -6,9 +6,8 @@
 #include <readline/history.h>
 #include "Server.h"
 #define MAXCMDS 100
-
+const int maxdatasize=100;
 static int done = 0;
-
 int com_help(char* arg);
 int com_sleep(char* arg);
 int com_quit(char* arg);
@@ -78,6 +77,7 @@ int execute_line(char *line) {
 	register int i;
 	cmd_t *command;
 	char *word;
+	char  error_msg[100];
 
 	/* Isolate the command word. */
 	i = 0;
@@ -95,6 +95,10 @@ int execute_line(char *line) {
 
 	if (!command) {
 		fprintf(stderr, "%s: No such command.\n", word);
+		memset(error_msg,'\0',maxdatasize);
+		snprintf(error_msg,maxdatasize,"%s No such command", word);
+		set_res(error_msg,strlen(error_msg));
+		
 		return (-1);
 	}
 

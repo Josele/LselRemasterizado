@@ -7,17 +7,19 @@
 #include "LibSock/Socket_Servidor.h"
 #include "LibSock/Socket.h"
 #include "Server.h"
-#define MAXDATASIZE 100
+#define MAXDATASIZE 150
 #define PORT 45000
 static char buff[MAXDATASIZE];  
+static char respuesta[MAXDATASIZE];
 volatile int tam;
 volatile int flag_leer;
+volatile int flag_enviar;
 volatile static int Des_Ser;
 volatile static int Des_Clit;
 enum serv_state {
   SERV_APT,
-  SERV_RECV,
   SERV_RECVINST,
+  SERV_ANSW,
   SERV_CLOSE,
 };
 
@@ -26,26 +28,16 @@ static int conexion_start (fsm_t* this)
  if(-1==(Des_Clit=Acepta_Conexion_Cliente (Des_Ser)))
  return 0;
 
-printf("conexion start\n");
+printf("C: conexion start\n");
 
 return 1;
 }
 
-static int sckt_weight (fsm_t* this)
-{//int resultado=recvform(Des_Clit,buff,MAXDATASIZE,);
- if(-1==Lee_Socket(Des_Clit,buff,1)){
-printf("error de lectura\n");
-this->tt->dest_state=SERV_CLOSE;//saltamos a cerrar el socket
-return 1;}
-tam=(int)buff[0];
-//printf ("Soy servidor, He recibido : %d\n", tam);
-
-return 1;
-}
 static int sckt_instruc (fsm_t* this)
 {
- if(-1==Lee_Socket(Des_Clit,buff,tam)){
-printf("error de lectura\n");
+memset(buff,'\0',MAXDATASIZE);
+if(-1==Lee_Socket(Des_Clit,buff,MAXDATASIZE)){
+printf("C: error de lectura\n");
 this->tt->dest_state=SERV_CLOSE;
 return 1;
 }
@@ -53,6 +45,15 @@ return 1;
 return 1;
 }
 
+static int answer_prepare (fsm_t* this)
+{
+
+if(flag_enviar=0)
+return 0;
+
+flag_enviar=0;
+return 1;
+}
 
 static int sckt_close (fsm_t* this)
 {
@@ -64,39 +65,41 @@ return 1;
 
 static void something (fsm_t* this)
 {
-
+flag_leer=0;
 }
 
-
-static void  ack (fsm_t* this)
-{
-memset(buff,'\0',MAXDATASIZE);
-strcpy (buff, "OK");
-Escribe_Socket (Des_Clit, buff, 2);
-memset(buff,'\0',MAXDATASIZE);
-}
 static void  execute (fsm_t* this)
 {
 //printf ("Soy servidor, He recibido : %s\n", buff);
-  
 	//ejecutamos y respondemos con el OK o error
-send(Des_Clit,"LO",2,0);
-printf("envio LO\n");
+//send(Des_Clit,respuesta,MAXDATASIZE,0);
+//printf("envio LO\n");
+
+memset(respuesta,'\0',MAXDATASIZE);
+sprintf(respuesta,"This command don't respond\0");
 flag_leer=1;
+
+}
+
+static void  answer_response (fsm_t* this)
+{
+//printf ("Soy servidor, He recibido : %s\n", buff);
+        //ejecutamos y respondemos con el OK o error
+send(Des_Clit,respuesta,MAXDATASIZE,0);
+printf("C: envio %s\n", respuesta);
+flag_leer=0;
 
 }
 static void finish (fsm_t* this)
 {
-memset(buff,'\0',MAXDATASIZE);
-printf("finish\n");
+printf("C: finish\n");
 // podemos añadir un flag con un flag con un break etc
-flag_leer=0;
 }
 // Explicit FSM description
 static fsm_trans_t serv[] = {
-  { SERV_APT, conexion_start, SERV_RECV,  something},
-  { SERV_RECV,     sckt_weight, SERV_RECVINST,  ack },
-  { SERV_RECVINST,  sckt_instruc, SERV_CLOSE,    execute   },
+  { SERV_APT, conexion_start, SERV_RECVINST,  something},
+  { SERV_RECVINST,  sckt_instruc, SERV_ANSW,    execute   },
+  { SERV_ANSW,answer_prepare, SERV_CLOSE, answer_response },
   { SERV_CLOSE,sckt_close, SERV_APT, finish },
   {-1, NULL, -1, NULL },
 };
@@ -117,24 +120,31 @@ fsm_fire (serv_fsm);
 return flag_leer;
 }
 
+
+
 char* get_buff(){
 
 return buff;
 
 }
+
+void set_res(char *resp,int length){
+memset(respuesta,'\0',MAXDATASIZE);
+if(length>MAXDATASIZE){
+	strncpy(respuesta,"Respuesta muy larga", 19);
+	return;}
+strncpy(respuesta,resp,length );
+flag_enviar=1;
+}
 /*
 int main()
 {
-
-
 Des_Ser=Abre_Socket_Inet (PORT,1);
   
   fsm_t* serv_fsm = fsm_new (serv);
 while(1){
-
  fsm_fire (serv_fsm); 
 }
-
 return 0;
 }*/
 /*
@@ -143,15 +153,11 @@ return 0;
 *Otras opciones son hebras y punteros.
 int socket_interp()
 {
-
-
 Des_Ser=Abre_Socket_Inet (PORT,1);
   
   fsm_t* serv_fsm = fsm_new (serv);
 while(1){
-
  fsm_fire (serv_fsm); 
 }
-
 return 0;
 }*/
