@@ -61,16 +61,16 @@ int Acepta_Conexion_Cliente (int Descriptor)
 *	del socket o -1 si hay probleamas
 * 
 */
-int Abre_Socket_Inet ( uint16_t Port,int Backlog)
+int Abre_Socket_Inet ( uint16_t  Port,int Backlog)
 {
-	struct sockaddr_in Direccion;
+	struct sockaddr_un Direccion;
 	
 	//socklen_t Longitud_Cliente;
 	//struct servent *Puerto;
 	int Descriptor;/* los ficheros descriptores */	
 	// se abre el socket
 	
-	Descriptor = socket (AF_INET, SOCK_STREAM, 0);
+	Descriptor = socket (AF_UNIX, SOCK_STREAM, 0);
 	if (Descriptor == -1)
 	 	return -1;
 
@@ -88,12 +88,13 @@ int Abre_Socket_Inet ( uint16_t Port,int Backlog)
 	* Se rellenan los campos de la estructura Direccion, necesaria
 	* para la llamada a la funcion bind()
 	*/
-	Direccion.sin_family = AF_INET;
+	Direccion.sun_family = AF_UNIX;
 	//Direccion.sin_port = Puerto->s_port;
-	Direccion.sin_port = htons(Port);
-	Direccion.sin_addr.s_addr =INADDR_ANY;
+	//Direccion.sin_port = htons(Port);
+	strncpy(Direccion.sun_path,"socket", sizeof(Direccion.sun_path)-1);
+	//Direccion.sin_addr.s_addr =INADDR_ANY;
 	/* INADDR_ANY coloca nuestra dirección IP automáticamente */
-	bzero(&(Direccion.sin_zero),8); 
+	//bzero(&(Direccion.sin_zero),8); 
    	/* escribimos ceros en el reto de la estructura */
 	if(bind(Descriptor,(struct sockaddr*)&Direccion,
            sizeof(struct sockaddr))==-1)
