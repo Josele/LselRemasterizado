@@ -1,8 +1,7 @@
 #!/bin/sh 
 echo start
 sudo fuser -k 4500/tcp
-sudo ./daemon  
-
+sudo ./daemon auto 8
 gpio write 19 0
 gpio write 20 0
 

@@ -44,6 +44,38 @@ int interp_addcmd(char* cmd, int (*cmd_func)(char*), char* doc) {
 	return 0;
 }
 
+
+void waitFor (unsigned int secs) {
+int    retTime = time(0) + secs;     // Get finishing time.
+    while (time(0) < retTime);    // Loop until it arrives.
+}
+void interp_run_auto(int time_command) {
+        initialize_readline();
+	FILE *file;
+	file = fopen("params.txt", "r");	
+        while (!done) {
+                char* s;
+                char line[80];
+		line[0]='\0';
+		if(feof(file))
+			rewind(file);
+		fgets(line,80,file);
+		rt_printf("%s\n",line);
+                if (!line)
+                        break;
+
+                s = stripwhite(line);
+                if (*s) {
+                        //add_history(s);
+                        execute_line(s);
+                }
+		waitFor(time_command);
+               // free(line);
+        }
+}
+
+
+
 void interp_run(void) {
 	
 fsm_t* serv_fsm = serv_init();

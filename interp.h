@@ -24,6 +24,7 @@
  * @{
  */
 void interp_run(void);
+void interp_run_auto(int time_command);
 int interp_addcmd(char* cmd, int (*cmd_func)(char*), char* doc);
 /***@}*/
 

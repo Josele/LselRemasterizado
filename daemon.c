@@ -126,8 +126,19 @@ int main(int argc, char* argv[]) {
 
 	task_start_all();
 	sleep(1);
+	if( argc > 3){
+     	printf("Too many arguments supplied.\n");
+   	}
+	else if (argc==2&&!strcmp(argv[1],"auto")){
+        printf(argv[2]);
+        interp_run_auto(4);
+        }
+        else if (argc==3&&!strcmp(argv[1],"auto")){
+        printf("Mode %s with %i period time between commands.\n",argv[1],atoi(argv[2]));
+        interp_run_auto(atoi(argv[2]));
+        }
+	else
 	interp_run();
-
 	task_delete_all();
 	i2c_close(i2chandler[0]->i2chandler );
 	i2c_close(i2chandler[1]->i2chandler );

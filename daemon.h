@@ -3,7 +3,7 @@
 
 // Task priorities
 #include <native/mutex.h>
-
+#include <string.h>
 #define TASK_DCC_PRIORITY 40
 #define TASK_POLL_PRIORITY 30
 #define TASK_SUN_PRIORITY 20

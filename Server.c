@@ -17,7 +17,7 @@ volatile int flag_enviar;
 volatile static int Des_Ser;
 volatile static int Des_Clit;
 enum serv_state {
-  SERV_APT,
+  SERV_ACPT,
   SERV_RECVINST,
   SERV_ANSW,
   SERV_CLOSE,
@@ -63,7 +63,7 @@ close(Des_Clit); /* cierra fd2*/
 return 1;
 }
 
-static void something (fsm_t* this)
+static void state_clean (fsm_t* this)
 {
 flag_leer=0;
 }
@@ -97,10 +97,10 @@ printf("C: finish\n");
 }
 // Explicit FSM description
 static fsm_trans_t serv[] = {
-  { SERV_APT, conexion_start, SERV_RECVINST,  something},
+  { SERV_ACPT, conexion_start, SERV_RECVINST,  state_clean},
   { SERV_RECVINST,  sckt_instruc, SERV_ANSW,    execute   },
   { SERV_ANSW,answer_prepare, SERV_CLOSE, answer_response },
-  { SERV_CLOSE,sckt_close, SERV_APT, finish },
+  { SERV_CLOSE,sckt_close, SERV_ACPT, finish },
   {-1, NULL, -1, NULL },
 };
 
